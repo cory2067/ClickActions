@@ -1,6 +1,6 @@
 {
-  "name": "My First Extension",
-  "version": "1.0",
+  "name": "ClickActions",
+  "version": "0.1",
   "manifest_version": 2,
   "content_scripts": [
       {
@@ -16,7 +16,7 @@
        "clipboardWrite",
        "tabs"
    ],
-   "description": "The first extension that I made.",
+   "description": "Mouse shortcuts for copy, paste, search, open site, and more",
    "browser_action": {
    	"default_icon": "icon.png",
    	"default_popup": "popup.html"
