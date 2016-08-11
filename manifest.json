@@ -1,0 +1,24 @@
+{
+  "name": "My First Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["jquery-3.1.0.min.js", "actions.js"]
+      }
+   ],
+   "background": {
+     "scripts": ["background.js"]
+   },
+   "permissions": [
+       "clipboardRead",
+       "clipboardWrite",
+       "tabs"
+   ],
+   "description": "The first extension that I made.",
+   "browser_action": {
+   	"default_icon": "icon.png",
+   	"default_popup": "popup.html"
+    }
+}
