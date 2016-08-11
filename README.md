@@ -13,3 +13,5 @@ Currently added actions:
         - Drag left: Open youtube
         - Drag right: Open gmail
         - Left click: Close current tab
+- Long left click
+    - Search for highlighted text in new tab
