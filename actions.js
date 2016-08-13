@@ -15,6 +15,12 @@ var mousey_init = 0;
 //checks activation for a fast left-right click
 var lr = 0;
 
+$(function() {
+  $.get(chrome.extension.getURL('/menu.html'), function(data) {
+    $($.parseHTML(data)).appendTo('body');
+  });
+});
+
 function getSelectionText() {
     var text = "";
     if (window.getSelection) {
@@ -26,13 +32,14 @@ function getSelectionText() {
 }
 
 function open(url) {
+  lr = 0;
+  $(".caMenuTable").css("display", "none");
   chrome.runtime.sendMessage({greeting: url});
 }
 
 $('body').mousedown(function(event) {
     switch (event.which) {
         case 1:
-            console.log('Left Mouse button pressed.');
             if(!lr){
               lr = 1;
               setTimeout(function() {
@@ -57,8 +64,6 @@ $('body').mousedown(function(event) {
             }, 400, l2 );
             break;
         case 3:
-            console.log('Right clicked ' + r);
-
             if(!r){
               r = true;
               setTimeout(function() { r = false; }, 400 );
@@ -72,8 +77,8 @@ $('body').mouseup(function(event) {
             l++;
             break;
         case 3:
-            console.log('Right unclicked ' + r);
             lr = 0;
+            $(".caMenuTable").css("display", "none");
             if(r){
               r = false;
               var text = getSelectionText();
@@ -101,13 +106,15 @@ $(document).mousemove(function(event) {
   l++;
   if(lr == 2)
   {
-    if(mousey - mousey_init > 10) //down
+    //the init variables are the mouse position when the click menu was opened
+
+    if(mousey - mousey_init > 20) //down
       open("http://messenger.com");
-    else if(mousey_init - mousey > 10) //up
+    else if(mousey_init - mousey > 20) //up
       open("http://reddit.com");
-    else if(mousex - mousex_init > 10) //right
+    else if(mousex - mousex_init > 20) //right
       open("http://gmail.com");
-    else if(mousex_init - mousex > 10) //left
+    else if(mousex_init - mousex > 20) //left
       open("https://youtube.com");
     else
       return;
@@ -116,12 +123,16 @@ $(document).mousemove(function(event) {
 });
 
 $('body').on('contextmenu', function(e) {
-  console.log(lr);
   if(lr)
   {
     lr = 2;
     mousex_init = mousex;
     mousey_init = mousey;
+    $(".caMenuTable").css({
+      "display": "table",
+      "top": mousey - 90,
+      "left": mousex - 150
+    });
     return false;
   }
-})
+});

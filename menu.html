@@ -1,0 +1,49 @@
+<style>
+.caMenuTable {
+  display: none;
+  position: absolute;
+  text-align: center;
+  table-layout: fixed;
+  border-spacing: 4px;
+  width: 300px;
+  opacity: 0.8;
+}
+
+.caMenuTableRow {
+  display: table-row;
+}
+
+.caMenuTableBody {
+  display: table-row-group;
+}
+
+.caMenuTableCell {
+  display: table-cell;
+  z-index: 99;
+  height: 30px;
+  padding: 10px;
+}
+
+.caMenuBord {
+  border: 1px solid black;
+  background: white;
+}
+</style>
+
+<div class="caMenuTable">
+  <div class="caMenuTableRow">
+    <div class="caMenuTableCell"></div>
+    <div class="caMenuTableCell caMenuBord">Reddit</div>
+    <div class="caMenuTableCell"></div>
+  </div>
+    <div class="caMenuTableRow">
+    <div class="caMenuTableCell caMenuBord">YouTube</div>
+    <div class="caMenuTableCell"></div>
+    <div class="caMenuTableCell caMenuBord">Gmail</div>
+  </div>
+    <div class="caMenuTableRow">
+    <div class="caMenuTableCell"></div>
+    <div class="caMenuTableCell caMenuBord">Messenger</div>
+    <div class="caMenuTableCell"></div>
+  </div>
+</div>
